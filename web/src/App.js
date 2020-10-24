@@ -3,10 +3,12 @@ import ResultText from './components/ResultText';
 
 function App() {
 	const [type, setType] = useState('binary');
-	const [value, setValue] = useState();
+	const [value, setValue] = useState('test');
 	return (
 		<div className="App">
-			<ResultText value={value} />
+			<div className="container">
+				<ResultText value={value} />
+			</div>
 		</div>
 	);
 }
