@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
-import ResultText from './components/ResultText';
+import React from 'react';
+import Home from './views/Home';
 
 function App() {
-	const [type, setType] = useState('binary');
-	const [value, setValue] = useState('test');
 	return (
 		<div className="App">
-			<div className="container">
-				<ResultText value={value} />
-			</div>
+			<Home />
 		</div>
 	);
 }
