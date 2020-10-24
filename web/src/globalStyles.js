@@ -19,11 +19,6 @@ export default createGlobalStyle`
 		justify-content:center;
 		align-items:center;
 		background:#8693AB;
-		.container{
-			display:flex;
-			justify-content:space-between;
-			flex-direction:column;
-			height:40%;
-		}
+		
 	}
 `;
