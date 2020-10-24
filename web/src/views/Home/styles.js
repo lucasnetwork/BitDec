@@ -10,11 +10,25 @@ export default styled.div`
 export const ContainerText = styled.div`
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	input {
+		background: none;
+		border: none;
+		border-bottom: 2px solid #212227;
+		outline: none;
+		font-size: 48px;
+		width: 100%;
+		max-width: 458px;
+		margin-bottom: 16px;
+		color: #bdd4e7;
+		text-align: center;
+	}
 `;
 
 export const ContainerButtons = styled.div`
-	display: flex;
-	button:first-child {
-		margin-right: 8px;
-	}
+	display: grid;
+	max-width: 435px;
+	column-gap: 8px;
+	grid-template-columns: repeat(2, 1fr);
 `;
