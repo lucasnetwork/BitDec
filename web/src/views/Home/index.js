@@ -27,7 +27,7 @@ const Home = () => {
 	const inputRef = useRef();
 	const [type, setType] = useState('binary');
 	const [value, setValue] = useState('');
-	const [valueFormat, setValueFormat] = useState('0');
+	const [valueFormat, setValueFormat] = useState(0);
 
 	function handleInputValue(e) {
 		if (typesShemas[type].check(e.target.value)) {
@@ -38,7 +38,7 @@ const Home = () => {
 
 	useEffect(() => {
 		if (value === '') {
-			setValueFormat('0');
+			setValueFormat(0);
 			return;
 		}
 		typesShemas[type].convert(value, setValueFormat);
@@ -52,6 +52,7 @@ const Home = () => {
 			<ContainerText>
 				<label htmlFor="number" />
 				<input
+					name="number"
 					id="number"
 					ref={inputRef}
 					value={value}
