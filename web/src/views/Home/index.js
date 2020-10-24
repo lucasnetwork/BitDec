@@ -15,7 +15,7 @@ const typesShemas = {
 	},
 	hex: {
 		check(value) {
-			return value.match(/[g-z]/i);
+			return value.match(/[^0-9a-f]/i);
 		},
 		convert(value, setValue) {
 			setValue(Number(`0x${value}`));
@@ -27,7 +27,7 @@ const Home = () => {
 	const inputRef = useRef();
 	const [type, setType] = useState('binary');
 	const [value, setValue] = useState('');
-	const [valueFormat, setValueFormat] = useState('');
+	const [valueFormat, setValueFormat] = useState('0');
 
 	function handleInputValue(e) {
 		if (typesShemas[type].check(e.target.value)) {
@@ -38,14 +38,13 @@ const Home = () => {
 
 	useEffect(() => {
 		if (value === '') {
-			setValueFormat('');
+			setValueFormat('0');
 			return;
 		}
 		typesShemas[type].convert(value, setValueFormat);
-	}, [value]);
+	}, [value, type]);
 	useEffect(() => {
 		setValue('');
-		setValueFormat('');
 	}, [type]);
 	return (
 		<Container>
