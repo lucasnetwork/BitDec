@@ -54,10 +54,14 @@ const Home = () => {
 				<ContainerButtons>
 					<Button
 						value="binário"
-						type={type}
+						active={type === 'binary'}
 						handleClick={() => setType('binary')}
 					/>
-					<Button value="hexa" type={type} handleClick={() => setType('hex')} />
+					<Button
+						value="hexa"
+						active={type === 'hex'}
+						handleClick={() => setType('hex')}
+					/>
 				</ContainerButtons>
 			</ContainerText>
 		</Container>
