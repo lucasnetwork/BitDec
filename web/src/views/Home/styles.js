@@ -5,6 +5,7 @@ export default styled.div`
 	justify-content: space-between;
 	flex-direction: column;
 	height: 40%;
+	margin: 20px;
 `;
 
 export const ContainerText = styled.div`
@@ -31,4 +32,9 @@ export const ContainerButtons = styled.div`
 	max-width: 435px;
 	column-gap: 8px;
 	grid-template-columns: repeat(2, 1fr);
+
+	@media (max-width: 500px) {
+		grid-template-columns: 1fr;
+		row-gap: 16px;
+	}
 `;
