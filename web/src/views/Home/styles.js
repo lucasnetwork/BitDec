@@ -4,7 +4,7 @@ export default styled.div`
 	display: flex;
 	justify-content: space-between;
 	flex-direction: column;
-	height: 40%;
+	height: 100%;
 	margin: 20px;
 `;
 
