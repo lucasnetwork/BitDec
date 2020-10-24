@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 
-export default styled.button`
+export default styled.button.attrs({
+	type: 'button',
+})`
 	width: 213px;
 	height: 60px;
 	background: #aab9cf;

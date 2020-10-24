@@ -50,7 +50,13 @@ const Home = () => {
 		<Container>
 			<ResultText value={valueFormat} />
 			<ContainerText>
-				<input ref={inputRef} value={value} onChange={handleInputValue} />
+				<label htmlFor="number" />
+				<input
+					id="number"
+					ref={inputRef}
+					value={value}
+					onChange={handleInputValue}
+				/>
 				<ContainerButtons>
 					<Button
 						value="binário"

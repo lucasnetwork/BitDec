@@ -13,6 +13,9 @@ export const ContainerText = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	label {
+		display: none;
+	}
 	input {
 		background: none;
 		border: none;
