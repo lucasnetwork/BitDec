@@ -5,43 +5,59 @@ import Container, { ContainerButtons, ContainerText } from './styles';
 import Button from '../../components/Button';
 
 const typesShemas = {
-	binary(value) {
-		return value.match(/[^0-1]/);
+	binary: {
+		check(value) {
+			return value.match(/[^0-1]/);
+		},
+		convert(value, setValue) {
+			setValue(Number(`0b${value}`));
+		},
 	},
-	hex(value) {
-		return value.match(/[g-z]/i);
+	hex: {
+		check(value) {
+			return value.match(/[g-z]/i);
+		},
+		convert(value, setValue) {
+			setValue(Number(`0x${value}`));
+		},
 	},
 };
 
 const Home = () => {
-	const [type, setType] = useState('hex');
+	const [type, setType] = useState('binary');
 	const [value, setValue] = useState('');
-	const [valueFormat, setValueFormat] = useState();
+	const [valueFormat, setValueFormat] = useState('');
 
-	function formatNumber(e) {
-		if (typesShemas[type](e.target.value)) {
+	function handleInputValue(e) {
+		if (typesShemas[type].check(e.target.value)) {
 			return;
 		}
 		setValue(e.target.value);
 	}
-	function handleBinary() {
-		const newValue = value.split('');
-		const valuebinary = newValue.reduce((acc, act, index) => {
-			return acc + act * Math.pow(2, newValue.length - index - 1);
-		}, 0);
-		setValueFormat(valuebinary);
-	}
+
 	useEffect(() => {
-		handleBinary();
+		if (value === '') {
+			setValueFormat('');
+			return;
+		}
+		typesShemas[type].convert(value, setValueFormat);
 	}, [value]);
+	useEffect(() => {
+		setValue('');
+		setValueFormat('');
+	}, [type]);
 	return (
 		<Container>
 			<ResultText value={valueFormat} />
 			<ContainerText>
-				<input value={value} onChange={formatNumber} />
+				<input value={value} onChange={handleInputValue} />
 				<ContainerButtons>
-					<Button value="binário" />
-					<Button value="hexa" />
+					<Button
+						value="binário"
+						type={type}
+						handleClick={() => setType('binary')}
+					/>
+					<Button value="hexa" type={type} handleClick={() => setType('hex')} />
 				</ContainerButtons>
 			</ContainerText>
 		</Container>
