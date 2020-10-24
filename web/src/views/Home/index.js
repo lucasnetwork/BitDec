@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import ResultText from '../../components/ResultText';
 import Container, { ContainerButtons, ContainerText } from './styles';
@@ -24,6 +24,7 @@ const typesShemas = {
 };
 
 const Home = () => {
+	const inputRef = useRef();
 	const [type, setType] = useState('binary');
 	const [value, setValue] = useState('');
 	const [valueFormat, setValueFormat] = useState('');
@@ -50,17 +51,23 @@ const Home = () => {
 		<Container>
 			<ResultText value={valueFormat} />
 			<ContainerText>
-				<input value={value} onChange={handleInputValue} />
+				<input ref={inputRef} value={value} onChange={handleInputValue} />
 				<ContainerButtons>
 					<Button
 						value="binário"
 						active={type === 'binary'}
-						handleClick={() => setType('binary')}
+						handleClick={() => {
+							setType('binary');
+							inputRef.current.focus();
+						}}
 					/>
 					<Button
 						value="hexa"
 						active={type === 'hex'}
-						handleClick={() => setType('hex')}
+						handleClick={() => {
+							setType('hex');
+							inputRef.current.focus();
+						}}
 					/>
 				</ContainerButtons>
 			</ContainerText>
