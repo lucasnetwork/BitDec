@@ -5,24 +5,24 @@ export default styled.button.attrs({
 })`
 	width: 213px;
 	height: 60px;
-	background: #aab9cf;
+	background: ${({ theme }) => theme.buttons.backPrimary};
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	outline: none;
 	border: none;
-	font-size: 48px;
-	color: #4a4343;
+	font-size: ${({ theme }) => theme.fontSize.text};
+	color: ${({ theme }) => theme.fontColors.secondary};
 	text-transform: capitalize;
 	cursor: pointer;
 	${({ active }) =>
 		active &&
 		css`
-			background: #637074;
-			color: #bdd4e7;
+			background: ${({ theme }) => theme.buttons.backActive};
+			color: ${({ theme }) => theme.fontColors.active};
 		`}
 	:active {
-		background: #3b4244;
-		color: #bdd4e7;
+		background: ${({ theme }) => theme.buttons.backSecondary};
+		color: ${({ theme }) => theme.fontColors.active};
 	}
 `;

@@ -5,7 +5,8 @@ export default createGlobalStyle`
 		box-sizing:border-box;
 		margin:0;
 		padding:0;
-		font-family:'Roboto',Arial, Helvetica, sans-serif
+		font-family:${({ theme }) => theme.fontFamily.roboto};
+		font-size:16px;
 	}
 
 	html,body,#root{
@@ -18,7 +19,7 @@ export default createGlobalStyle`
 		display:grid;
 		grid-template-rows:100px 1fr 100px;
 		align-items:center;
-		background:#8693AB;
+		background:${({ theme }) => theme.background.primary};
 		
 	}
 `;

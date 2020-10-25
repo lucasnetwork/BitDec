@@ -21,11 +21,11 @@ export const ContainerText = styled.div`
 		border: none;
 		border-bottom: 2px solid #212227;
 		outline: none;
-		font-size: 48px;
+		font-size: ${({ theme }) => theme.fontSize.text};
 		width: 100%;
 		max-width: 458px;
 		margin-bottom: 16px;
-		color: #bdd4e7;
+		color: ${({ theme }) => theme.fontColors.active};
 		text-align: center;
 	}
 `;
