@@ -1,14 +1,12 @@
 import styled from 'styled-components/native';
+import Contants from 'expo-constants';
 
 export default styled.View`
 	flex: 1;
 	background-color: #8693ab;
 	align-items: center;
 	justify-content: space-between;
-`;
-
-export const ResultText = styled.Text`
-	font-size: 64px;
+	padding-top: ${() => `${Contants.statusBarHeight + 20}px`};
 `;
 
 export const ContainerButtons = styled.View`
