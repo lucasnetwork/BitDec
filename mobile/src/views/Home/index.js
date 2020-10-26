@@ -46,22 +46,29 @@ const Home = () => {
 
 		typesShemas[type].convert(value, setValueFormat);
 	}, [value, type]);
+	useEffect(() => {
+		setValue('');
+	}, [type]);
 
 	return (
 		<Container>
 			<ResultText value={valueFormat} />
 			<ContainerInputs>
 				<Input
-					keyboardType="numeric"
+					keyboardType={type === 'binary' ? 'numeric' : 'default'}
 					onChangeText={handleInputValue}
 					value={value}
 				/>
 				<ContainerButtons>
-					<Button>
-						<TextButton>Binário</TextButton>
+					<Button
+						mr
+						active={type === 'binary'}
+						onPress={() => setType('binary')}
+					>
+						<TextButton active={type === 'binary'}>Binário</TextButton>
 					</Button>
-					<Button>
-						<TextButton>Hex</TextButton>
+					<Button active={type === 'hex'} onPress={() => setType('hex')}>
+						<TextButton active={type === 'hex'}>Hex</TextButton>
 					</Button>
 				</ContainerButtons>
 			</ContainerInputs>

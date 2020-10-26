@@ -1,4 +1,4 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import Contants from 'expo-constants';
 
 export default styled.View`
@@ -24,16 +24,33 @@ export const Button = styled.TouchableOpacity`
 	flex: 1;
 	height: 60px;
 	background-color: #aab9cf;
+	${({ active }) =>
+		active &&
+		css`
+			background-color: #637074;
+			color: #bdd4e7;
+		`}
+	${({ mr }) =>
+		mr &&
+		css`
+			margin-right: 8px;
+		`}
 `;
 
 export const TextButton = styled.Text`
 	font-size: 40px;
 	color: #4a4343;
+	text-align: center;
+	${({ active }) =>
+		active &&
+		css`
+			color: #bdd4e7;
+		`}
 `;
 
 export const Input = styled.TextInput`
 	width: 100%;
-	height: 50px;
+	height: 65px;
 	border-color: #212227;
 	border-bottom-width: 2px;
 	font-size: 48px;
