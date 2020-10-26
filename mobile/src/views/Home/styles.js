@@ -56,3 +56,11 @@ export const Input = styled.TextInput`
 	font-size: 48px;
 	color: #bdd4e7;
 `;
+
+export const ContainerIcons = styled.View`
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+	padding-left: 20px;
+	padding-right: 20px;
+`;

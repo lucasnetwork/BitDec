@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { Feather, MaterialIcons } from '@expo/vector-icons';
 import Container, {
 	ContainerButtons,
 	Button,
 	TextButton,
 	ContainerInputs,
 	Input,
+	ContainerIcons,
 } from './styles';
 import ResultText from '../../components/ResultText';
 
@@ -52,6 +54,10 @@ const Home = () => {
 
 	return (
 		<Container>
+			<ContainerIcons>
+				<Feather name="save" size={40} color="#4A4343" />
+				<MaterialIcons name="storage" size={40} color="#4A4343" />
+			</ContainerIcons>
 			<ResultText value={valueFormat} />
 			<ContainerInputs>
 				<Input
