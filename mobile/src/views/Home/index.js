@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Container, {
-	ResultText,
 	ContainerButtons,
 	Button,
 	TextButton,
 	ContainerInputs,
 	Input,
 } from './styles';
+import ResultText from '../../components/ResultText';
 
 const typesShemas = {
 	binary: {
@@ -41,6 +41,7 @@ const Home = () => {
 	useEffect(() => {
 		if (value === '') {
 			setValueFormat(0);
+			return;
 		}
 
 		typesShemas[type].convert(value, setValueFormat);
@@ -48,7 +49,7 @@ const Home = () => {
 
 	return (
 		<Container>
-			<ResultText>Resultado</ResultText>
+			<ResultText value={valueFormat} />
 			<ContainerInputs>
 				<Input
 					keyboardType="numeric"
