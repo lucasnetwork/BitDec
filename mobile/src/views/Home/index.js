@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Feather, MaterialIcons } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native';
 import Container, {
 	ContainerButtons,
 	Button,
@@ -55,8 +56,12 @@ const Home = () => {
 	return (
 		<Container>
 			<ContainerIcons>
-				<Feather name="save" size={40} color="#4A4343" />
-				<MaterialIcons name="storage" size={40} color="#4A4343" />
+				<TouchableOpacity>
+					<Feather name="save" size={40} color="#4A4343" />
+				</TouchableOpacity>
+				<TouchableOpacity>
+					<MaterialIcons name="storage" size={40} color="#4A4343" />
+				</TouchableOpacity>
 			</ContainerIcons>
 			<ResultText value={valueFormat} />
 			<ContainerInputs>
