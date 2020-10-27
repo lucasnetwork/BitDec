@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Feather, MaterialIcons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Container, {
+import {
 	ContainerButtons,
 	Button,
 	TextButton,
@@ -10,6 +10,7 @@ import Container, {
 	Input,
 	ContainerIcons,
 } from './styles';
+import ContainerBigView from '../../Containers/BigView';
 import ResultText from '../../components/ResultText';
 
 const typesShemas = {
@@ -58,7 +59,7 @@ const Home = () => {
 	}, [type]);
 
 	return (
-		<Container>
+		<ContainerBigView>
 			<ContainerIcons>
 				<TouchableOpacity>
 					<Feather name="save" size={40} color="#4A4343" />
@@ -87,7 +88,7 @@ const Home = () => {
 					</Button>
 				</ContainerButtons>
 			</ContainerInputs>
-		</Container>
+		</ContainerBigView>
 	);
 };
 
