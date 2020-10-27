@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Feather, MaterialIcons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Container, {
 	ContainerButtons,
 	Button,
@@ -34,6 +35,9 @@ const Home = () => {
 	const [type, setType] = useState('binary');
 	const [value, setValue] = useState('');
 	const [valueFormat, setValueFormat] = useState(0);
+
+	const navigation = useNavigation();
+
 	function handleInputValue(e) {
 		if (typesShemas[type].check(e)) {
 			return;
@@ -59,7 +63,7 @@ const Home = () => {
 				<TouchableOpacity>
 					<Feather name="save" size={40} color="#4A4343" />
 				</TouchableOpacity>
-				<TouchableOpacity>
+				<TouchableOpacity onPress={() => navigation.navigate('Store')}>
 					<MaterialIcons name="storage" size={40} color="#4A4343" />
 				</TouchableOpacity>
 			</ContainerIcons>
