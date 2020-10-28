@@ -44,7 +44,10 @@ const Store = () => {
 				<ContainerValues>
 					{values.map((value) => (
 						<ContainerValue key={value.id}>
+							<ValueText>{value.type}</ValueText>
 							<ValueText>{value.value}</ValueText>
+							<AntDesign name="arrowright" size={40} color="#4A4343" />
+							<ValueText>{value.valueFormat}</ValueText>
 							<TouchableOpacity onPress={() => deletValueOfStorage(value.id)}>
 								<EvilIcons name="trash" size={40} color="#B43F3F" />
 							</TouchableOpacity>

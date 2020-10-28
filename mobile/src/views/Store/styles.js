@@ -17,6 +17,7 @@ export const ContainerButton = styled.View`
 export const ValueText = styled.Text`
 	font-size: 32px;
 	color: #4a4343;
+	text-transform: capitalize;
 `;
 
 export const ContainerValues = styled.View`
