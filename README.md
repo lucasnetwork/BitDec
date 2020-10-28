@@ -6,6 +6,7 @@ Project to Convert of binary and hexadecimals numbers for decimals
 
 # 💻Tecnologias
 * React
+* React-Native
 * Styled-components
 * PropTypes
 
