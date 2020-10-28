@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { AntDesign, EvilIcons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ContainerBigView from '../../Containers/BigView';
 import ContainerScroll, {
@@ -15,7 +15,7 @@ import ContainerScroll, {
 const Store = () => {
 	const [values, setValues] = useState([]);
 
-	useEffect(() => {
+	useFocusEffect(() => {
 		async function getValues() {
 			const storage = JSON.parse(await AsyncStorage.getItem('@values'));
 			setValues(storage || []);
@@ -23,6 +23,14 @@ const Store = () => {
 
 		getValues();
 	}, []);
+
+	async function deletValueOfStorage(id) {
+		const filterValues = values.filter((value, index) => index !== id);
+
+		await AsyncStorage.setItem('@values', JSON.stringify(filterValues));
+		setValues(filterValues);
+	}
+
 	const navigation = useNavigation();
 	return (
 		<ContainerScroll>
@@ -35,9 +43,9 @@ const Store = () => {
 				</ContainerButton>
 				<ContainerValues>
 					{values.map((value) => (
-						<ContainerValue>
+						<ContainerValue key={value.id}>
 							<ValueText>{value.value}</ValueText>
-							<TouchableOpacity>
+							<TouchableOpacity onPress={() => deletValueOfStorage(value.id)}>
 								<EvilIcons name="trash" size={40} color="#B43F3F" />
 							</TouchableOpacity>
 						</ContainerValue>

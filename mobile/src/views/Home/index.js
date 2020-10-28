@@ -65,6 +65,7 @@ const Home = () => {
 		} catch (e) {
 			alert('error em salvar');
 		}
+		setValue('');
 	}
 
 	useEffect(() => {
