@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Feather, MaterialIcons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
 	ContainerButtons,
 	Button,
@@ -46,6 +47,23 @@ const Home = () => {
 		setValue(e);
 	}
 
+	async function saveValueInStorage() {
+		if (valueFormat === 0) {
+			return;
+		}
+		try {
+			const values = JSON.parse(await AsyncStorage.getItem('@values')) || [];
+			const json = JSON.stringify([...values, { type, value, valueFormat }]);
+			if (values === null) {
+				await AsyncStorage.setItem('@values', json);
+			}
+			await AsyncStorage.setItem('@values', json);
+			await AsyncStorage.setItem('@values', json);
+		} catch (e) {
+			alert('error em salvar');
+		}
+	}
+
 	useEffect(() => {
 		if (value === '') {
 			setValueFormat(0);
@@ -61,7 +79,7 @@ const Home = () => {
 	return (
 		<ContainerBigView>
 			<ContainerIcons>
-				<TouchableOpacity>
+				<TouchableOpacity onPress={saveValueInStorage}>
 					<Feather name="save" size={40} color="#4A4343" />
 				</TouchableOpacity>
 				<TouchableOpacity onPress={() => navigation.navigate('Store')}>
