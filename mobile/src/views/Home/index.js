@@ -53,7 +53,10 @@ const Home = () => {
 		}
 		try {
 			const values = JSON.parse(await AsyncStorage.getItem('@values')) || [];
-			const json = JSON.stringify([...values, { type, value, valueFormat }]);
+			const json = JSON.stringify([
+				...values,
+				{ id: values.length, type, value, valueFormat },
+			]);
 			if (values === null) {
 				await AsyncStorage.setItem('@values', json);
 			}
